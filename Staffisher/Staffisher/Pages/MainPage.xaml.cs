@@ -33,5 +33,10 @@ namespace Staffisher.Pages
 
             FlyoutPage.ListView.SelectedItem = null;
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }

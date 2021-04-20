@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Staffisher.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPageDetail : ContentPage
+    public partial class StatsPage : TabbedPage
     {
-        public MainPageDetail()
+        public StatsPage()
         {
             InitializeComponent();
         }

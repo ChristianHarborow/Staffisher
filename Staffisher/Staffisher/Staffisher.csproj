@@ -22,25 +22,34 @@
     <Compile Update="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Pages\MainPageDetail.xaml.cs">
-      <DependentUpon>MainPageDetail.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Pages\MainPageFlyout.xaml.cs">
       <DependentUpon>MainPageFlyout.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\PastMatchesPage.xaml.cs">
+      <DependentUpon>PastMatchesPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Pages\MainPage.xaml">
+    <EmbeddedResource Update="Pages\FutureMatchesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\MainPageDetail.xaml">
+    <EmbeddedResource Update="Pages\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\MainPageFlyout.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\MatchesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\PastMatchesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\SignUpPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\StatsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
