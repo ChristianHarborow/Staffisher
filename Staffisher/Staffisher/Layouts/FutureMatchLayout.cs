@@ -5,37 +5,61 @@ using Xamarin.Forms;
 
 namespace Staffisher.Layouts
 {
-    class FutureMatchLayout : StackLayout
+    class FutureMatchLayout : MatchLayout
     {
-        private string matchID;
-        public FutureMatchLayout(Classes.FutureMatchSummary summary)
+        private string attending;
+        private Button going;
+        private Button maybe;
+        private Button notGoing;
+
+        public FutureMatchLayout(Classes.FutureMatchSummary summary) : base(summary)
         {
-            this.matchID = summary.MatchID;
-            this.HorizontalOptions = LayoutOptions.Center;
+            attending = summary.Attending;
 
-            Style labelStyle = new Style(typeof(Label))
-            {
-                Setters =
-                {
-                    new Setter { Property = Label.HorizontalOptionsProperty, Value = LayoutOptions.Center },
-                    new Setter { Property = Label.FontSizeProperty, Value = 16}
-                }
-            };
-
-            this.Children.Add(new Label() { Text = summary.Date, Style = labelStyle });
-            this.Children.Add(new Label() { Text = summary.Venue + " - " + summary.Pool, Style = labelStyle });
             this.Children.Add(new Label() { Text = summary.Going + " Going", Style = labelStyle });
             this.Children.Add(new Label() { Text = summary.MaybeGoing + " Maybe Going", Style = labelStyle });
             this.Children.Add(new Label() { Text = summary.NotGoing + " Not Going", Style = labelStyle });
 
             StackLayout buttons = new StackLayout() { Orientation = StackOrientation.Horizontal };
-            Button going = new Button() { Text = "Going" };
-            Button maybe = new Button() { Text = "Maybe" };
-            Button notGoing = new Button() { Text = "Not Going" };
+            
+            going = new Button() { Text = "Going", IsEnabled = attending != "Going" };
+            maybe = new Button() { Text = "Maybe", IsEnabled = attending != "Maybe" };
+            notGoing = new Button() { Text = "Not Going", IsEnabled = attending != "Not Going" };
+
+            going.Clicked += OnAttendenceButtonClicked;
+            maybe.Clicked += OnAttendenceButtonClicked;
+            notGoing.Clicked += OnAttendenceButtonClicked;
+
             buttons.Children.Add(going);
             buttons.Children.Add(maybe);
             buttons.Children.Add(notGoing);
+            
             this.Children.Add(buttons);
+        }
+
+        private void OnAttendenceButtonClicked(object sender, EventArgs e)
+        {
+            if (sender == going)
+            {
+                attending = "Going";
+                going.IsEnabled = false;
+                maybe.IsEnabled = true;
+                notGoing.IsEnabled = true;
+            }
+            else if (sender == maybe)
+            {
+                attending = "Maybe";
+                going.IsEnabled = true;
+                maybe.IsEnabled = false;
+                notGoing.IsEnabled = true;
+            }
+            else if (sender == notGoing)
+            {
+                attending = "Not Going";
+                going.IsEnabled = true;
+                maybe.IsEnabled = true;
+                notGoing.IsEnabled = false;
+            }
         }
     }
 }

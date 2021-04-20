@@ -17,7 +17,8 @@ namespace Staffisher.Pages
             InitializeComponent();
 
             Classes.FutureMatchSummary summary = new Classes.FutureMatchSummary()
-            { MatchID = "1332", Date = "21st of April 2021", Venue = "Old Ground", Pool = "Pool Alpha", Going = "9", MaybeGoing = "3", NotGoing = "4" };
+            { MatchID = "1332", Date = "21st of April 2021", Venue = "Old Ground", 
+                Pool = "Pool Alpha", Going = "9", MaybeGoing = "3", NotGoing = "4", Attending = ""};
 
             stackLayout.Children.Add(new Layouts.FutureMatchLayout(summary));
             stackLayout.Children.Add(new Layouts.FutureMatchLayout(summary));
