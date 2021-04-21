@@ -4,7 +4,7 @@
              x:Class="Staffisher.Pages.PastMatchesPage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout x:Name="stackLayout" Margin="20" Spacing="20">
+            <StackLayout x:Name="stackLayout" Margin="10" Spacing="25">
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

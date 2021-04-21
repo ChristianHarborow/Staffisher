@@ -13,8 +13,19 @@ namespace Staffisher.Layouts
         {
             Setters =
                 {
-                    new Setter { Property = Label.HorizontalOptionsProperty, Value = LayoutOptions.Center },
-                    new Setter { Property = Label.FontSizeProperty, Value = 16}
+                    new Setter { Property = Label.HorizontalTextAlignmentProperty, Value = TextAlignment.Center },
+                    new Setter { Property = Label.FontSizeProperty, Value = 17}
+                }
+        };
+
+        protected Style buttonStyle = new Style(typeof(Button))
+        {
+            Setters =
+                {
+                    new Setter { Property = Button.BackgroundColorProperty, Value = (Color)Application.Current.Resources["accentOrange"] },
+                    new Setter { Property = Button.HorizontalOptionsProperty, Value = LayoutOptions.Center },
+                    new Setter { Property = Button.HeightRequestProperty, Value = 40 },
+                    new Setter { Property = Button.MarginProperty, Value = 5 }
                 }
         };
 
@@ -24,7 +35,7 @@ namespace Staffisher.Layouts
             this.HorizontalOptions = LayoutOptions.Center;
 
             this.Children.Add(new Label() { Text = summary.Date, Style = labelStyle });
-            this.Children.Add(new Label() { Text = summary.Venue + " - " + summary.Pool, Style = labelStyle });
+            this.Children.Add(new Label() { Text = summary.Venue + " - " + summary.Pool, Style = labelStyle, LineBreakMode = LineBreakMode.WordWrap });
         }
     }
 }

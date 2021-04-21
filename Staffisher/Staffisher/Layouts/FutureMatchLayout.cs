@@ -21,10 +21,10 @@ namespace Staffisher.Layouts
             this.Children.Add(new Label() { Text = summary.NotGoing + " Not Going", Style = labelStyle });
 
             StackLayout buttons = new StackLayout() { Orientation = StackOrientation.Horizontal };
-            
-            going = new Button() { Text = "Going", IsEnabled = attending != "Going" };
-            maybe = new Button() { Text = "Maybe", IsEnabled = attending != "Maybe" };
-            notGoing = new Button() { Text = "Not Going", IsEnabled = attending != "Not Going" };
+
+            going = new Button() { Text = "Going", IsEnabled = attending != "Going", Style = buttonStyle };
+            maybe = new Button() { Text = "Maybe", IsEnabled = attending != "Maybe", Style = buttonStyle };
+            notGoing = new Button() { Text = "Not Going", IsEnabled = attending != "Not Going", Style = buttonStyle };
 
             going.Clicked += OnAttendenceButtonClicked;
             maybe.Clicked += OnAttendenceButtonClicked;

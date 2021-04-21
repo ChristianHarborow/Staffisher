@@ -26,6 +26,6 @@
         </DataTemplate>
     </ListView.ItemTemplate>
     </ListView>
-        <Button Text="Log Out"/>
+        <Button Text="Log Out" BackgroundColor="DarkRed"/>
     </StackLayout>
 </ContentPage>

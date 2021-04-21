@@ -5,6 +5,6 @@
             Title="Matches">
   <!--Pages can be added as references or inline-->
     <pages:PastMatchesPage Title="History"/>
-    <ContentPage Title="Today" />
+    <pages:CurrentMatchPage Title="Today" />
     <pages:FutureMatchesPage Title="Future" />
 </TabbedPage>

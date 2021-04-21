@@ -13,12 +13,12 @@ namespace Staffisher.Layouts
             this.Children.Add(new Label() { Text = summary.Placement, Style = labelStyle });
             this.Children.Add(new Label() { Text = summary.Weight, Style = labelStyle });
             
-            Button moreDetails = new Button { Text = "More Details" };
-            this.Children.Add(moreDetails);
-            moreDetails.Clicked += OnMoreDetailsClicked;
+            Button scoreboard = new Button { Text = "More Details", Style = buttonStyle };
+            this.Children.Add(scoreboard);
+            scoreboard.Clicked += OnScoreboardClicked;
         }
 
-        private async void OnMoreDetailsClicked(object sender, EventArgs e)
+        private async void OnScoreboardClicked(object sender, EventArgs e)
         {
             //something
         }
