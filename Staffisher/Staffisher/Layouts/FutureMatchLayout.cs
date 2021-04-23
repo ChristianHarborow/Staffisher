@@ -7,59 +7,62 @@ namespace Staffisher.Layouts
 {
     class FutureMatchLayout : MatchLayout
     {
-        private string attending;
-        private Button going;
-        private Button maybe;
-        private Button notGoing;
+        private string userAttending;
+        private Button goingButton;
+        private Button notGoingButton;
+        private Label goingLabel;
+        private Label notGoingLabel;
+        private int going;
+        private int notGoing;
 
         public FutureMatchLayout(Classes.FutureMatchSummary summary) : base(summary)
         {
-            attending = summary.Attending;
+            userAttending = summary.UserAttending;
+            going = summary.Going;
+            notGoing = summary.NotGoing;
 
-            this.Children.Add(new Label() { Text = summary.Going + " Going", Style = labelStyle });
-            this.Children.Add(new Label() { Text = summary.MaybeGoing + " Maybe Going", Style = labelStyle });
-            this.Children.Add(new Label() { Text = summary.NotGoing + " Not Going", Style = labelStyle });
+            goingLabel = new Label() { Text = going + " Going", Style = labelStyle };
+            notGoingLabel = new Label() { Text = notGoing + " Not Going", Style = labelStyle };
+
+            this.Children.Add(goingLabel);
+            this.Children.Add(notGoingLabel);
 
             StackLayout buttons = new StackLayout() { Orientation = StackOrientation.Horizontal };
 
-            going = new Button() { Text = "Going", IsEnabled = attending != "Going", Style = buttonStyle };
-            maybe = new Button() { Text = "Maybe", IsEnabled = attending != "Maybe", Style = buttonStyle };
-            notGoing = new Button() { Text = "Not Going", IsEnabled = attending != "Not Going", Style = buttonStyle };
+            goingButton = new Button() { Text = "Going", IsEnabled = userAttending != "Going", Style = buttonStyle };
+            notGoingButton = new Button() { Text = "Not Going", IsEnabled = userAttending != "Not Going", Style = buttonStyle };
 
-            going.Clicked += OnAttendenceButtonClicked;
-            maybe.Clicked += OnAttendenceButtonClicked;
-            notGoing.Clicked += OnAttendenceButtonClicked;
+            goingButton.Clicked += OnAttendenceButtonClicked;
+            notGoingButton.Clicked += OnAttendenceButtonClicked;
 
-            buttons.Children.Add(going);
-            buttons.Children.Add(maybe);
-            buttons.Children.Add(notGoing);
+            buttons.Children.Add(goingButton);
+            buttons.Children.Add(notGoingButton);
             
             this.Children.Add(buttons);
         }
 
         private void OnAttendenceButtonClicked(object sender, EventArgs e)
         {
-            if (sender == going)
+            if (userAttending == "Going") going--;
+            else if (userAttending == "Not Going") notGoing--;
+
+            if (sender == goingButton)
             {
-                attending = "Going";
-                going.IsEnabled = false;
-                maybe.IsEnabled = true;
-                notGoing.IsEnabled = true;
+                userAttending = "Going";
+                goingButton.IsEnabled = false;
+                notGoingButton.IsEnabled = true;
+                going++;
             }
-            else if (sender == maybe)
+            else if (sender == notGoingButton)
             {
-                attending = "Maybe";
-                going.IsEnabled = true;
-                maybe.IsEnabled = false;
-                notGoing.IsEnabled = true;
+                userAttending = "Not Going";
+                goingButton.IsEnabled = true;
+                notGoingButton.IsEnabled = false;
+                notGoing++;
             }
-            else if (sender == notGoing)
-            {
-                attending = "Not Going";
-                going.IsEnabled = true;
-                maybe.IsEnabled = true;
-                notGoing.IsEnabled = false;
-            }
+
+            goingLabel.Text = going + " Going";
+            notGoingLabel.Text = notGoing + " Not Going";
         }
     }
 }

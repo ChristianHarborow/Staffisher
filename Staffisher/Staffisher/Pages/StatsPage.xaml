@@ -1,9 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Staffisher.Pages.StatsPage">
-  <!--Pages can be added as references or inline-->
-  <ContentPage Title="Catch" />
-  <ContentPage Title="Pool" />
-  <ContentPage Title="Competition" />
-</TabbedPage>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Ellipse Stroke="{StaticResource brushOrange}" StrokeThickness="4" WidthRequest="150" HeightRequest="150" 
+                     AbsoluteLayout.LayoutBounds="0.5, 0.02" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            
+            <Label Text="100000 lbs&#x0a;12oz" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="22"
+                   HeightRequest="150" WidthRequest="150"
+                   AbsoluteLayout.LayoutBounds="0.5, 0.02" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            
+            <Label Text="Total Weight&#x0a;Caught" HorizontalTextAlignment="Center" FontSize="18" 
+                   AbsoluteLayout.LayoutBounds="0.5, 0.26" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            
+            
+            <Ellipse Stroke="{StaticResource brushOrange}" StrokeThickness="4" WidthRequest="125" HeightRequest="125" 
+                     AbsoluteLayout.LayoutBounds="0.1, 0.4" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            
+            <Label Text="200 lbs&#x0a;12oz" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="22" 
+                   HeightRequest="125" WidthRequest="125"
+                   AbsoluteLayout.LayoutBounds="0.1, 0.4" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            
+            <Label Text="Highest Weight&#x0a;Caught" HorizontalTextAlignment="Center" FontSize="18" 
+                   AbsoluteLayout.LayoutBounds="0.1, 0.56" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            
+            
+            <Ellipse Stroke="{StaticResource brushOrange}" StrokeThickness="4" WidthRequest="125" HeightRequest="125" 
+                     AbsoluteLayout.LayoutBounds="0.9, 0.4" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            
+            <Label Text="100 lbs&#x0a;12oz" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="22" 
+                   HeightRequest="125" WidthRequest="125"
+                   AbsoluteLayout.LayoutBounds="0.9, 0.4" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            
+            <Label Text="Average Weight&#x0a;Caught" HorizontalTextAlignment="Center" FontSize="18" 
+                   AbsoluteLayout.LayoutBounds="0.9, 0.56" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+            <Label Text="Matches Completed: 0" HorizontalTextAlignment="Center" FontSize="18" 
+                   AbsoluteLayout.LayoutBounds="0.5, 0.66" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+            <Label Text="Best Venue: ???" HorizontalTextAlignment="Center" FontSize="18" 
+                   AbsoluteLayout.LayoutBounds="0.5, 0.73" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+            <Label Text="Worst Venue: ???" HorizontalTextAlignment="Center" FontSize="18" 
+                   AbsoluteLayout.LayoutBounds="0.5, 0.8" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+            <Label Text="1st Place Finishes: 0" HorizontalTextAlignment="Center" FontSize="18" 
+                   AbsoluteLayout.LayoutBounds="0.5, 0.87" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+            <Label Text="Top 3 Finishes: 0" HorizontalTextAlignment="Center" FontSize="18" 
+                   AbsoluteLayout.LayoutBounds="0.5, 0.94" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

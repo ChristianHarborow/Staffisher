@@ -6,10 +6,9 @@ namespace Staffisher.Classes
 {
     class FutureMatchSummary : MatchSummary
     {
-        public string Attending { get; set; }
-        public string Going { get; set; }
-        public string MaybeGoing { get; set; }
-        public string NotGoing { get; set; }
+        public string UserAttending { get; set; }
+        public int Going { get; set; }
+        public int NotGoing { get; set; }
 
         public FutureMatchSummary()
         {

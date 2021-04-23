@@ -6,6 +6,7 @@
         <ResourceDictionary>
             <Color x:Key="backgroundGrey">#36393f</Color>
             <Color x:Key="accentOrange">#f98436</Color>
+            <SolidColorBrush x:Key="brushOrange" Color="{StaticResource accentOrange}"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

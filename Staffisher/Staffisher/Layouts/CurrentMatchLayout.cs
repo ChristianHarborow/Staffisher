@@ -22,22 +22,17 @@ namespace Staffisher.Layouts
                 SelectionMode = ListViewSelectionMode.None,
                 ItemTemplate = new DataTemplate(() =>
                 {
-                    Label positionLabel = new Label();
+                    Label positionLabel = new Label()
+                    { FontSize = 17, WidthRequest = 30, HorizontalTextAlignment = TextAlignment.End };
                     positionLabel.SetBinding(Label.TextProperty, "Position");
-                    positionLabel.FontSize = 17;
-                    positionLabel.WidthRequest = 30;
-                    positionLabel.HorizontalTextAlignment = TextAlignment.End;
 
-                    Label anglerLabel = new Label();
+                    Label anglerLabel = new Label()
+                    { FontSize = 17, WidthRequest = 180 };
                     anglerLabel.SetBinding(Label.TextProperty, "Angler");
-                    anglerLabel.FontSize = 17;
-                    anglerLabel.WidthRequest = 180;
 
-                    Label weightLabel = new Label();
+                    Label weightLabel = new Label()
+                    { FontSize = 17, WidthRequest = 95, HorizontalTextAlignment = TextAlignment.End };
                     weightLabel.SetBinding(Label.TextProperty, "Weight");
-                    weightLabel.FontSize = 17;
-                    weightLabel.WidthRequest = 95;
-                    weightLabel.HorizontalTextAlignment = TextAlignment.Center;
 
                     return new ViewCell
                     {
