@@ -16,15 +16,14 @@ namespace Staffisher.Pages
         {
             InitializeComponent();
 
-            Classes.FutureMatchSummary summary = new Classes.FutureMatchSummary()
-            { MatchID = "1332", Date = "21st of April 2021", Venue = "Old Ground", 
-                Pool = "Pool Alpha", Going = 9, NotGoing = 4, UserAttending = ""};
+            Classes.FutureMatch futureMatch = new Classes.FutureMatch(
+                new DateTime(2021, 5, 4, 9, 0, 0), "A Very Long Venu Name", "A Very Long Pool Name");
 
-            stackLayout.Children.Add(new Layouts.FutureMatchLayout(summary));
-            stackLayout.Children.Add(new Layouts.FutureMatchLayout(summary));
-            stackLayout.Children.Add(new Layouts.FutureMatchLayout(summary));
-            stackLayout.Children.Add(new Layouts.FutureMatchLayout(summary));
-            stackLayout.Children.Add(new Layouts.FutureMatchLayout(summary));
+            stackLayout.Children.Add(new Layouts.FutureMatchLayout(futureMatch));
+            stackLayout.Children.Add(new Layouts.FutureMatchLayout(futureMatch));
+            stackLayout.Children.Add(new Layouts.FutureMatchLayout(futureMatch));
+            stackLayout.Children.Add(new Layouts.FutureMatchLayout(futureMatch));
+            stackLayout.Children.Add(new Layouts.FutureMatchLayout(futureMatch));
 
         }
     }

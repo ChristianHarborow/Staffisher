@@ -16,14 +16,21 @@ namespace Staffisher.Pages
         {
             InitializeComponent();
 
-            Classes.PastMatchSummary summary = new Classes.PastMatchSummary() 
-            { MatchID = "1332", Date = "1st of April 2021", Venue = "Old Ground", Pool = "Pool Alpha", Placement = "3rd out of 10", Weight = "12Lbs 12oz" };
+            List<Classes.AnglerWeighIn> weighIns = new List<Classes.AnglerWeighIn>();
+            weighIns.Add(new Classes.AnglerWeighIn(new Classes.Angler("Christian Harborow"), new Classes.PoundsAndOunces(200, 10)));
+            weighIns.Add(new Classes.AnglerWeighIn(new Classes.Angler("Christian Harborow"), new Classes.PoundsAndOunces(200, 10)));
+            weighIns.Add(new Classes.AnglerWeighIn(new Classes.Angler("Christian Harborow"), new Classes.PoundsAndOunces(200, 10)));
 
-            stackLayout.Children.Add(new Layouts.PastMatchLayout(summary));
-            stackLayout.Children.Add(new Layouts.PastMatchLayout(summary));
-            stackLayout.Children.Add(new Layouts.PastMatchLayout(summary));
-            stackLayout.Children.Add(new Layouts.PastMatchLayout(summary));
-            stackLayout.Children.Add(new Layouts.PastMatchLayout(summary));
+            Classes.CurrentMatch currentMatch = new Classes.CurrentMatch(
+                new DateTime(2021, 5, 4, 9, 0, 0), "A Very Long Venu Name", "A Very Long Pool Name", weighIns);
+
+            Classes.PastMatch pastMatch = new Classes.PastMatch(currentMatch);
+
+            stackLayout.Children.Add(new Layouts.PastMatchLayout(pastMatch));
+            stackLayout.Children.Add(new Layouts.PastMatchLayout(pastMatch));
+            stackLayout.Children.Add(new Layouts.PastMatchLayout(pastMatch));
+            stackLayout.Children.Add(new Layouts.PastMatchLayout(pastMatch));
+            stackLayout.Children.Add(new Layouts.PastMatchLayout(pastMatch));
         }
     }
 }

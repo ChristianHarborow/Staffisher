@@ -7,7 +7,6 @@ namespace Staffisher.Layouts
 {
     class MatchLayout : StackLayout
     {
-        protected string matchID;
 
         protected Style labelStyle = new Style(typeof(Label))
         {
@@ -29,13 +28,12 @@ namespace Staffisher.Layouts
                 }
         };
 
-        public MatchLayout(Classes.MatchSummary summary)
+        public MatchLayout(Classes.Match match)
         {
-            this.matchID = summary.MatchID;
             this.HorizontalOptions = LayoutOptions.Center;
 
-            this.Children.Add(new Label() { Text = summary.Date, Style = labelStyle });
-            this.Children.Add(new Label() { Text = summary.Venue + " - " + summary.Pool, Style = labelStyle, LineBreakMode = LineBreakMode.WordWrap });
+            this.Children.Add(new Label() { Text = match.DateTime.ToLongDateString() + " - " + match.DateTime.ToShortTimeString(), Style = labelStyle });
+            this.Children.Add(new Label() { Text = match.Venue + " - " + match.Pool, Style = labelStyle, LineBreakMode = LineBreakMode.WordWrap });
         }
     }
 }

@@ -6,15 +6,28 @@ namespace Staffisher.Classes
 {
     public class Angler
     {
-        string Email { get; }
-        string Username { get; }
-        bool IsAdmin { get; }
+        public string Email { get; }
+        public string PasswordHash { get; }
+        public string Username { get; }
+        public bool IsAdmin { get; }
 
-        public Angler(string email, string username, bool isAdmin)
+        public Angler(string email, string passwordHash, string username, bool isAdmin)
         {
             Email = email;
+            PasswordHash = passwordHash;
             Username = username;
             IsAdmin = isAdmin;
+        }
+
+        public Angler(string username)
+        {
+            //TESTING PURPOSES
+            Username = username;
+        }
+
+        override public string ToString()
+        {
+            return Username;
         }
     }
 }

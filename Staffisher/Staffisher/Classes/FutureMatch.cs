@@ -6,33 +6,33 @@ namespace Staffisher.Classes
 {
     class FutureMatch : Match
     {
-        List<Angler> Attending { get; }
-        List<Angler> NotAttending { get; }
+        public List<Angler> Attending { get; }
+        public List<Angler> NotAttending { get; }
         
-        public FutureMatch(string venue, string pool, DateTime dateTime) : base(venue, pool, dateTime)
+        public FutureMatch(DateTime dateTime, string venue, string pool) : base(dateTime, venue, pool)
         {
             Attending = new List<Angler>();
             NotAttending = new List<Angler>();
         }
 
-        public string IsAnglerAttending(Angler angler)
+        public string IsAnglerAttending()
         {
-            if (Attending.Contains(angler)) return "Attending";
-            if (NotAttending.Contains(angler)) return "Not Attending";
+            if (Attending.Contains(App.User)) return "Attending";
+            if (NotAttending.Contains(App.User)) return "Not Attending";
             return "";
         }
 
-        public void SetAnglerAttendance(Angler angler, bool isAttending)
+        public void SetAnglerAttendance(bool isAttending)
         {
             if (isAttending)
             {
-                NotAttending.Remove(angler);
-                Attending.Add(angler);
+                NotAttending.Remove(App.User);
+                Attending.Add(App.User);
             }
             else
             {
-                Attending.Remove(angler);
-                NotAttending.Add(angler);
+                Attending.Remove(App.User);
+                NotAttending.Add(App.User);
             }
         }
     }

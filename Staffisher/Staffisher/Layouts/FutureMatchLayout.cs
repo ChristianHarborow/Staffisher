@@ -7,62 +7,48 @@ namespace Staffisher.Layouts
 {
     class FutureMatchLayout : MatchLayout
     {
-        private string userAttending;
-        private Button goingButton;
-        private Button notGoingButton;
-        private Label goingLabel;
-        private Label notGoingLabel;
-        private int going;
-        private int notGoing;
+        private Classes.FutureMatch futureMatch;
+        private Button attendingButton;
+        private Button notAttendingButton;
+        
+        private Label attendingLabel;
+        private Label notAttendingLabel;
 
-        public FutureMatchLayout(Classes.FutureMatchSummary summary) : base(summary)
+        public FutureMatchLayout(Classes.FutureMatch futureMatch) : base(futureMatch)
         {
-            userAttending = summary.UserAttending;
-            going = summary.Going;
-            notGoing = summary.NotGoing;
+            this.futureMatch = futureMatch;
 
-            goingLabel = new Label() { Text = going + " Going", Style = labelStyle };
-            notGoingLabel = new Label() { Text = notGoing + " Not Going", Style = labelStyle };
+            attendingLabel = new Label() { Text = futureMatch.Attending.Count + " Attending", Style = labelStyle };
+            notAttendingLabel = new Label() { Text = futureMatch.NotAttending.Count + " Not Attending", Style = labelStyle };
 
-            this.Children.Add(goingLabel);
-            this.Children.Add(notGoingLabel);
+            this.Children.Add(attendingLabel);
+            this.Children.Add(notAttendingLabel);
 
             StackLayout buttons = new StackLayout() { Orientation = StackOrientation.Horizontal };
+            buttons.HorizontalOptions = LayoutOptions.Center;
 
-            goingButton = new Button() { Text = "Going", IsEnabled = userAttending != "Going", Style = buttonStyle };
-            notGoingButton = new Button() { Text = "Not Going", IsEnabled = userAttending != "Not Going", Style = buttonStyle };
+            attendingButton = new Button() { Text = "Attending", IsEnabled = futureMatch.IsAnglerAttending() != "Attending", Style = buttonStyle };
+            notAttendingButton = new Button() { Text = "Not Attending", IsEnabled = futureMatch.IsAnglerAttending() != "Not Attending", Style = buttonStyle };
 
-            goingButton.Clicked += OnAttendenceButtonClicked;
-            notGoingButton.Clicked += OnAttendenceButtonClicked;
+            attendingButton.Clicked += OnAttendenceButtonClicked;
+            notAttendingButton.Clicked += OnAttendenceButtonClicked;
 
-            buttons.Children.Add(goingButton);
-            buttons.Children.Add(notGoingButton);
+            buttons.Children.Add(attendingButton);
+            buttons.Children.Add(notAttendingButton);
             
             this.Children.Add(buttons);
         }
 
         private void OnAttendenceButtonClicked(object sender, EventArgs e)
         {
-            if (userAttending == "Going") going--;
-            else if (userAttending == "Not Going") notGoing--;
-
-            if (sender == goingButton)
-            {
-                userAttending = "Going";
-                goingButton.IsEnabled = false;
-                notGoingButton.IsEnabled = true;
-                going++;
-            }
-            else if (sender == notGoingButton)
-            {
-                userAttending = "Not Going";
-                goingButton.IsEnabled = true;
-                notGoingButton.IsEnabled = false;
-                notGoing++;
-            }
-
-            goingLabel.Text = going + " Going";
-            notGoingLabel.Text = notGoing + " Not Going";
+            bool attending = sender == attendingButton;
+            futureMatch.SetAnglerAttendance(attending);
+            
+            attendingButton.IsEnabled = !attending;
+            notAttendingButton.IsEnabled = attending;
+            
+            attendingLabel.Text = futureMatch.Attending.Count + " Attending";
+            notAttendingLabel.Text = futureMatch.NotAttending.Count + " Not Attending";
         }
     }
 }

@@ -17,14 +17,14 @@ namespace Staffisher.Pages
             InitializeComponent();
 
             List<Classes.AnglerWeighIn> weighIns = new List<Classes.AnglerWeighIn>();
-            weighIns.Add(new Classes.AnglerWeighIn() { Angler = "Christian Harborow", Weight = new Classes.PoundsAndOunces(200, 10), Position = 11 });
-            weighIns.Add(new Classes.AnglerWeighIn() { Angler = "Angler2", Weight = new Classes.PoundsAndOunces(7, 8), Position = 2 });
-            weighIns.Add(new Classes.AnglerWeighIn() { Angler = "Angler3", Weight = new Classes.PoundsAndOunces(7, 8), Position = 3 });
+            weighIns.Add(new Classes.AnglerWeighIn(new Classes.Angler("Christian Harborow"), new Classes.PoundsAndOunces(200, 10)));
+            weighIns.Add(new Classes.AnglerWeighIn(new Classes.Angler("Christian Harborow"), new Classes.PoundsAndOunces(200, 10)));
+            weighIns.Add(new Classes.AnglerWeighIn(new Classes.Angler("Christian Harborow"), new Classes.PoundsAndOunces(200, 10)));
 
-            Classes.CurrentMatchSummary summary = new Classes.CurrentMatchSummary()
-            { MatchID = "1332", Date = "31st of December 2021", Venue = "A Very Long Venu Name", Pool = "A Very Long Pool Name", AnglersWeighedIn = weighIns, HasWeighedIn = false };
+            Classes.CurrentMatch currentMatch = new Classes.CurrentMatch(
+                new DateTime(2021, 5, 4, 9, 0, 0), "A Very Long Venu Name", "A Very Long Pool Name", weighIns);
 
-            stackLayout.Children.Add(new Layouts.CurrentMatchLayout(summary));
+            stackLayout.Children.Add(new Layouts.CurrentMatchLayout(currentMatch));
         }
     }
 }

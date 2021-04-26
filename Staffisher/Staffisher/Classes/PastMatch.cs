@@ -42,9 +42,18 @@ namespace Staffisher.Classes
             return $"You Placed {placement}{ordinal} Out Of {WeighIns.Count}";
         }
         
+        public string GetWeight()
+        {
+            Predicate<AnglerWeighIn> predicate = FindAngler;
+            AnglerWeighIn weighIn = WeighIns.Find(predicate);
+
+            if (weighIn == null) return "Did Not Weigh In";
+            return $"You Caught {weighIn.ToString()}";
+        }
+
         private static bool FindAngler(AnglerWeighIn weighIn)
         {
-            return weighIn.Angler == App.User ;
+            return weighIn.Angler == App.User;
         }
     }
 }

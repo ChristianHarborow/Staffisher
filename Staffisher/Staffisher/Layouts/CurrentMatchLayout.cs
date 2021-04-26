@@ -7,18 +7,18 @@ namespace Staffisher.Layouts
 {
     class CurrentMatchLayout : MatchLayout
     {
-        public CurrentMatchLayout(Classes.CurrentMatchSummary summary) : base(summary)
+        public CurrentMatchLayout(Classes.CurrentMatch currentMatch) : base(currentMatch)
         {
-            this.Children.Add(new Label() { Text = summary.HasWeighedIn ? "You Have Weighed In" : "You Have Not Weighed In", Style = labelStyle });
+            this.Children.Add(new Label() { Text = currentMatch.HasWeighedIn() ? "You Have Weighed In" : "You Have Not Weighed In", Style = labelStyle });
 
             Button weighIn = new Button() 
-            { Text = "Weigh In", IsEnabled = !summary.HasWeighedIn, Margin = 10, Style = buttonStyle };
+            { Text = "Weigh In", IsEnabled = !currentMatch.HasWeighedIn(), Margin = 10, Style = buttonStyle };
 
             this.Children.Add(weighIn);
 
             ListView listView = new ListView
             {
-                ItemsSource = summary.AnglersWeighedIn,
+                ItemsSource = currentMatch.WeighIns,
                 SelectionMode = ListViewSelectionMode.None,
                 ItemTemplate = new DataTemplate(() =>
                 {
