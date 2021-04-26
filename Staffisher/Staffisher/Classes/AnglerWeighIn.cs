@@ -6,13 +6,14 @@ namespace Staffisher.Classes
 {
     class AnglerWeighIn
     {
-        public string Angler { get; set; }
+        public Angler Angler { get; set; }
         public PoundsAndOunces Weight { get; set; }
         public int Position { get; set; }
 
-        public AnglerWeighIn()
+        public AnglerWeighIn(Angler angler, PoundsAndOunces weight)
         {
-
+            Angler = angler;
+            Weight = weight;
         }
     }
 }

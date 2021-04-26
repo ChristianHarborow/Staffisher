@@ -6,6 +6,8 @@ namespace Staffisher
 {
     public partial class App : Application
     {
+        public static Classes.Angler User { get; set; }
+        
         public App()
         {
             InitializeComponent();
