@@ -5,10 +5,11 @@
              BackgroundColor="{StaticResource backgroundGrey}">
     
     <StackLayout VerticalOptions="Center" Margin="30" Spacing="16">
-        <Entry Placeholder="username"/>
-        <Entry Placeholder="email"/>
-        <Entry Placeholder="password" IsPassword="True"/>
-        <Entry Placeholder="confirm password" IsPassword="True"/>
+        <Entry x:Name="emailEntry" Placeholder="email" Text=""/>
+        <Entry x:Name="usernameEntry" Placeholder="username" Text=""/>
+        <Entry x:Name="passwordEntry" Placeholder="password" IsPassword="True" Text=""/>
+        <Entry x:Name="confirmPasswordEntry" Placeholder="confirm password" IsPassword="True" Text=""/>
+        <Label x:Name="errorLabel" TextColor="Red" HorizontalTextAlignment="Center"/>
         <Button Text="Sign Up" BackgroundColor="{StaticResource accentOrange}" Clicked="OnSignUpClicked"/>
         <Label Text="Already have an account?  Log In" HorizontalOptions="Center" FontSize="18">
             <Label.GestureRecognizers>

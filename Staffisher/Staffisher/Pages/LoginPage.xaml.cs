@@ -18,6 +18,8 @@ namespace Staffisher.Pages
 
         private async void OnSignUpTapped(object sender, EventArgs e)
         {
+
+
             Navigation.InsertPageBefore(new SignUpPage(), this);
             await Navigation.PopAsync();
         }

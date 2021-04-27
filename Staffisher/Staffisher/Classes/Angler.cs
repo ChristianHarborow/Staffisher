@@ -11,7 +11,7 @@ namespace Staffisher.Classes
         public string Username { get; }
         public bool IsAdmin { get; }
 
-        public Angler(string email, string passwordHash, string username, bool isAdmin)
+        public Angler(string email, string passwordHash, string username, bool isAdmin = false)
         {
             Email = email;
             PasswordHash = passwordHash;
