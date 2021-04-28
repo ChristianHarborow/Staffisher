@@ -26,6 +26,7 @@
         </DataTemplate>
     </ListView.ItemTemplate>
     </ListView>
-        <Button Text="Log Out" BackgroundColor="DarkRed"/>
-    </StackLayout>
+        <Label x:Name="usernameLabel" FontSize="18" Margin="10, 0, 10, 5"/>
+        <Button Text="Log Out" BackgroundColor="DarkRed" Clicked="OnLogOutClicked"/>
+  </StackLayout>
 </ContentPage>

@@ -4,14 +4,15 @@
              x:Class="Staffisher.Pages.SignUpPage"
              BackgroundColor="{StaticResource backgroundGrey}">
     
-    <StackLayout VerticalOptions="Center" Margin="30" Spacing="16">
+    <StackLayout VerticalOptions="Center" Margin="30" Spacing="12">
+        <Label Text="Sign Up" FontSize="45" HorizontalTextAlignment="Center" Margin="0, 0, 0, 10"/>
         <Entry x:Name="emailEntry" Placeholder="email" Text=""/>
         <Entry x:Name="usernameEntry" Placeholder="username" Text=""/>
         <Entry x:Name="passwordEntry" Placeholder="password" IsPassword="True" Text=""/>
         <Entry x:Name="confirmPasswordEntry" Placeholder="confirm password" IsPassword="True" Text=""/>
         <Label x:Name="errorLabel" TextColor="Red" HorizontalTextAlignment="Center"/>
         <Button Text="Sign Up" BackgroundColor="{StaticResource accentOrange}" Clicked="OnSignUpClicked"/>
-        <Label Text="Already have an account?  Log In" HorizontalOptions="Center" FontSize="18">
+        <Label Text="Already have an account?  Log In" HorizontalOptions="Center" FontSize="18" TextDecorations="Underline" Margin="0, 10, 0, 0">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnLogInTapped"/>
             </Label.GestureRecognizers>

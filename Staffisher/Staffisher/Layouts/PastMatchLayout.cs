@@ -10,8 +10,12 @@ namespace Staffisher.Layouts
 
         public PastMatchLayout(Classes.PastMatch pastMatch) : base(pastMatch)
         {
-            this.Children.Add(new Label() { Text = pastMatch.GetPlacement(), Style = labelStyle });
-            this.Children.Add(new Label() { Text = pastMatch.GetWeight(), Style = labelStyle });
+            string placement = pastMatch.GetPlacement();
+
+            this.Children.Add(new Label() { Text = placement, Style = labelStyle });
+
+            if (placement != "Did Not Weigh In")
+                this.Children.Add(new Label() { Text = pastMatch.GetWeight(), Style = labelStyle });
             
             Button scoreboard = new Button { Text = "More Details", Style = buttonStyle };
             this.Children.Add(scoreboard);

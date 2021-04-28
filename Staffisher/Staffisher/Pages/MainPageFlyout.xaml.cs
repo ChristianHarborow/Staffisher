@@ -21,8 +21,22 @@ namespace Staffisher.Pages
         {
             InitializeComponent();
 
+            usernameLabel.Text = "Signed In As:\n" + App.User.Username;
+
             BindingContext = new MainPageFlyoutViewModel();
             ListView = MenuItemsListView;
+        }
+
+        private async void OnLogOutClicked(object sender, EventArgs e)
+        {
+            bool logOut = await DisplayAlert("Log Out", "Are You Sure You Want To Log Out?", "Yes", "No");
+
+            if (logOut)
+            {
+                App.User = null;
+                Navigation.InsertPageBefore(new LoginPage(), Navigation.NavigationStack.ElementAt(0));
+                await Navigation.PopAsync();
+            }
         }
 
         class MainPageFlyoutViewModel : INotifyPropertyChanged
@@ -50,6 +64,11 @@ namespace Staffisher.Pages
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
             #endregion
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

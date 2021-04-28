@@ -40,6 +40,8 @@ namespace Staffisher.Pages
 
             if (signUpFailed) return;
 
+            App.Anglers.Add(new Classes.Angler(emailEntry.Text, App.GetHash(passwordEntry.Text), usernameEntry.Text));
+
             Navigation.InsertPageBefore(new MainPage(), this);
             await Navigation.PopAsync();
         }
@@ -48,11 +50,14 @@ namespace Staffisher.Pages
         {
             if (passwordEntry.Text != confirmPasswordEntry.Text)
             {
-
                 errorLabel.Text += (signUpFailed ? "\n" : "") + "Passwords Must Match";
-                signUpFailed = true;
+                return true;
             }
-
+            if (passwordEntry.Text.Length < 8)
+            {
+                errorLabel.Text += (signUpFailed ? "\n" : "") + "Passwords Must Contain At Least 8 Characters";
+                return true;
+            }
             return signUpFailed;
         }
 
