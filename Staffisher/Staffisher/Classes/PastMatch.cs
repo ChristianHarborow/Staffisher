@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Staffisher.Classes
 {
-    class PastMatch : Match
+    public class PastMatch : Match
     {
         public List<AnglerWeighIn> WeighIns { get; }
 

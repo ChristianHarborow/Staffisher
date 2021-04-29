@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
-
   <style name="MainTheme" parent="MainTheme.Base">
-    <item name="colorPrimary">#f98436</item>
+    <item name="colorPrimary">@color/customOrange</item>
     <item name="colorPrimaryDark">#000000</item>
-    <item name="colorAccent">#f98436</item>
+    <item name="colorAccent">@color/customOrange</item>
   </style>
 </resources>

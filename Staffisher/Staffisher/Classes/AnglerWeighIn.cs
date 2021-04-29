@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Staffisher.Classes
 {
-    class AnglerWeighIn
+    public class AnglerWeighIn
     {
         public Angler Angler { get; set; }
         public PoundsAndOunces Weight { get; set; }

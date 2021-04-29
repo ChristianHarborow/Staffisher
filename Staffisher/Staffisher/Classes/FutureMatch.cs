@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Staffisher.Classes
 {
-    class FutureMatch : Match
+    public class FutureMatch : Match
     {
         public List<Angler> Attending { get; }
         public List<Angler> NotAttending { get; }

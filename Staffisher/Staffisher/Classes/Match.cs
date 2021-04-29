@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Staffisher.Classes
 {
-    class Match
+    public abstract class Match
     {
         public DateTime DateTime { get; }
         public string Venue { get; }

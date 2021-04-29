@@ -26,14 +26,15 @@ namespace Staffisher.Pages
         private async void OnLogInClicked(object sender, EventArgs e)
         {
             errorLabel.Text = "";
+            string email = emailEntry.Text.Trim();
 
-            if (emailEntry.Text.Length == 0 || passwordEntry.Text.Length == 0)
+            if (email.Length == 0 || passwordEntry.Text.Length == 0)
             {
                 errorLabel.Text = "All Fields Must Be Filled";
                 return;
             }
 
-            Classes.Angler angler = ValidateEmail();
+            Classes.Angler angler = ValidateEmail(email);
             if (angler == null) return;
             if (!ValidatePassword(angler)) return;
 
@@ -42,9 +43,9 @@ namespace Staffisher.Pages
             await Navigation.PopAsync();
         }
 
-        private Classes.Angler ValidateEmail()
+        private Classes.Angler ValidateEmail(string email)
         {
-            if (!Regex.IsMatch(emailEntry.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.IgnoreCase))
+            if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.IgnoreCase))
             {
                 errorLabel.Text = "Email Is Invalid";
                 return null;
@@ -52,7 +53,7 @@ namespace Staffisher.Pages
 
             Predicate<Classes.Angler> predicate = (Classes.Angler predicateAngler) =>
             {
-                return predicateAngler.Email == emailEntry.Text;
+                return predicateAngler.Email == email;
             };
 
             Classes.Angler angler = App.Anglers.Find(predicate);
@@ -68,7 +69,7 @@ namespace Staffisher.Pages
 
         private bool ValidatePassword(Classes.Angler angler)
         {
-            if (App.GetHash(passwordEntry.Text) != angler.PasswordHash)
+            if (App.GetHash(passwordEntry.Text.Trim()) != angler.PasswordHash)
             {
                 errorLabel.Text = "Email Or Password Incorrect";
                 return false;

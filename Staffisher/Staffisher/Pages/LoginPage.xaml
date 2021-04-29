@@ -5,13 +5,13 @@
              BackgroundColor="{StaticResource backgroundGrey}">
 
     <StackLayout VerticalOptions="Center" Margin="30" Spacing="12">
-        <Label Text="STAFFISHER" FontSize="45" HorizontalTextAlignment="Center"/>
+        <Label Text="STAFFISHER" Style="{StaticResource titleLabel}"/>
         <Image Source="logo.png"/>
-        <Entry x:Name="emailEntry" Placeholder="email" Text=""/>
-        <Entry x:Name="passwordEntry" Placeholder="password" IsPassword="True" Text=""/>
+        <Entry x:Name="emailEntry" Placeholder="email" Style="{StaticResource darkEntry}"/>
+        <Entry x:Name="passwordEntry" Placeholder="password" IsPassword="True" Style="{StaticResource darkEntry}"/>
         <Label x:Name="errorLabel" TextColor="Red" HorizontalTextAlignment="Center"/>
         <Button Text="Log In" BackgroundColor="{StaticResource accentOrange}" Clicked="OnLogInClicked"/>
-        <Label Text="Don't have an account?  Sign Up" HorizontalOptions="Center" FontSize="18" TextDecorations="Underline" Margin="0, 10, 0, 0">
+        <Label Text="Don't have an account?  Sign Up" Style="{StaticResource linkLabel}">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnSignUpTapped"/>
             </Label.GestureRecognizers>

@@ -2,7 +2,8 @@
 <FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Staffisher.Pages.MainPage"
-             xmlns:pages="clr-namespace:Staffisher.Pages">
+             xmlns:pages="clr-namespace:Staffisher.Pages"
+            BackgroundColor="{StaticResource backgroundGrey}">
   <FlyoutPage.Flyout>
     <pages:MainPageFlyout x:Name="FlyoutPage" />
   </FlyoutPage.Flyout>

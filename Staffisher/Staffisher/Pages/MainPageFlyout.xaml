@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Staffisher.Pages.MainPageFlyout"
-             Title="Flyout">
+             Title="Flyout"
+             BackgroundColor="{StaticResource backgroundGrey}">
   <StackLayout>
     <ListView x:Name="MenuItemsListView"
               SeparatorVisibility="None"
@@ -17,16 +18,13 @@
         <DataTemplate>
           <ViewCell>
             <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
-              <Label VerticalOptions="FillAndExpand" 
-                    VerticalTextAlignment="Center" 
-                    Text="{Binding Title}" 
-                    FontSize="24"/>
+                <Label VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{Binding Title}" FontSize="24" TextColor="LightGray"/>
             </StackLayout>
           </ViewCell>
         </DataTemplate>
     </ListView.ItemTemplate>
     </ListView>
-        <Label x:Name="usernameLabel" FontSize="18" Margin="10, 0, 10, 5"/>
+        <Label x:Name="usernameLabel" FontSize="18" TextColor="LightGray" Margin="10, 0, 10, 5"/>
         <Button Text="Log Out" BackgroundColor="DarkRed" Clicked="OnLogOutClicked"/>
   </StackLayout>
 </ContentPage>

@@ -4,9 +4,39 @@
              x:Class="Staffisher.App">
     <Application.Resources>
         <ResourceDictionary>
+            <!--COLORS-->
             <Color x:Key="backgroundGrey">#36393f</Color>
+            <Color x:Key="lightGrey">#c1c7c9</Color>
             <Color x:Key="accentOrange">#f98436</Color>
+
+            <!--Brushes-->
             <SolidColorBrush x:Key="brushOrange" Color="{StaticResource accentOrange}"/>
+
+            <!--STYLES-->
+            <Style x:Key="darkEntry" TargetType="Entry">
+                <Setter Property="PlaceholderColor" Value="DarkGray"/>
+                <Setter Property="TextColor" Value="LightGray"/>
+                <Setter Property="Text" Value=""/>
+            </Style>
+            <Style x:Key="centeredLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="LightGray"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="titleLabel" TargetType="Label" BasedOn="{StaticResource centeredLabel}">
+                <Setter Property="FontSize" Value="45"/>
+            </Style>
+            <Style x:Key="linkLabel" TargetType="Label" BasedOn="{StaticResource centeredLabel}">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="TextDecorations" Value="Underline"/>
+                <Setter Property="Margin" Value="0, 10, 0, 0"/>
+            </Style>
+            <Style x:Key="smallStatsLabel" TargetType="Label" BasedOn="{StaticResource centeredLabel}">
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
+            <Style x:Key="bigStatsLabel" TargetType="Label" BasedOn="{StaticResource centeredLabel}">
+                <Setter Property="FontSize" Value="22"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
