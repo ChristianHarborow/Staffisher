@@ -43,6 +43,7 @@ namespace Staffisher.Layouts
         {
             bool attending = sender == attendingButton;
             futureMatch.SetAnglerAttendance(attending);
+            App.SerializeFutureMatches();
             
             attendingButton.IsEnabled = !attending;
             notAttendingButton.IsEnabled = attending;

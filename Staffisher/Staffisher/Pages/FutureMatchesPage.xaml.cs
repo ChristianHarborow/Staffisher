@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Staffisher.Classes;
 
 namespace Staffisher.Pages
 {
@@ -26,21 +27,34 @@ namespace Staffisher.Pages
                 createMatchButton.Clicked += OnCreateMatchClicked;
                 mainStackLayout.Children.Insert(0, createMatchButton);
             }
+        }
 
-            Classes.FutureMatch futureMatch = new Classes.FutureMatch(
-                new DateTime(2021, 5, 4, 9, 0, 0), "A Very Long Venue Name", "A Very Long Pool Name");
+        private void DisplayFutureMatches()
+        {
+            scrollStackLayout.Children.Clear();
+            
+            if (App.FutureMatches.Count == 0)
+            {
+                Label label = new Label() { Text = "There Are No Future Matches Planned", Style = (Style) App.Current.Resources["centeredLabel"] };
+                scrollStackLayout.Children.Add(label);
+                return;
+            }
 
-            scrollStackLayout.Children.Add(new Layouts.FutureMatchLayout(futureMatch));
-            scrollStackLayout.Children.Add(new Layouts.FutureMatchLayout(futureMatch));
-            scrollStackLayout.Children.Add(new Layouts.FutureMatchLayout(futureMatch));
-            scrollStackLayout.Children.Add(new Layouts.FutureMatchLayout(futureMatch));
-            scrollStackLayout.Children.Add(new Layouts.FutureMatchLayout(futureMatch));
-
+            foreach (FutureMatch futureMatch in App.FutureMatches)
+            {
+                scrollStackLayout.Children.Add(new Layouts.FutureMatchLayout(futureMatch));
+            }
         }
 
         private async void OnCreateMatchClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CreateMatchPage());
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            DisplayFutureMatches();
         }
     }
 }

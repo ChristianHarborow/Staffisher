@@ -6,12 +6,12 @@
     
     <StackLayout VerticalOptions="Center" Margin="30" Spacing="12">
         <Label Text="Sign Up" Style="{StaticResource titleLabel}" Margin="0, 0, 0, 10"/>
-        <Entry x:Name="emailEntry" Placeholder="email" Style="{StaticResource darkEntry}"/>
+        <Entry x:Name="emailEntry" Placeholder="email" Keyboard="Email" Style="{StaticResource darkEntry}"/>
         <Entry x:Name="usernameEntry" Placeholder="username" Style="{StaticResource darkEntry}"/>
         <Entry x:Name="passwordEntry" Placeholder="password" IsPassword="True" Style="{StaticResource darkEntry}"/>
         <Entry x:Name="confirmPasswordEntry" Placeholder="confirm password" IsPassword="True" Style="{StaticResource darkEntry}"/>
         <Label x:Name="errorLabel" TextColor="Red" HorizontalTextAlignment="Center"/>
-        <Button Text="Sign Up" BackgroundColor="{StaticResource accentOrange}" Clicked="OnSignUpClicked"/>
+        <Button Text="Sign Up" Style="{StaticResource orangeButton}" Clicked="OnSignUpClicked"/>
         <Label Text="Already have an account?  Log In" Style="{StaticResource linkLabel}">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnLogInTapped"/>

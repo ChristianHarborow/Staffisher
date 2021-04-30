@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Staffisher.Classes;
 
 namespace Staffisher.Pages
 {
@@ -15,16 +16,54 @@ namespace Staffisher.Pages
         public CurrentMatchPage()
         {
             InitializeComponent();
+        }
 
-            List<Classes.AnglerWeighIn> weighIns = new List<Classes.AnglerWeighIn>();
-            weighIns.Add(new Classes.AnglerWeighIn(new Classes.Angler("Christian Harborow"), new Classes.PoundsAndOunces(200, 10)));
-            weighIns.Add(new Classes.AnglerWeighIn(new Classes.Angler("Christian Harborow"), new Classes.PoundsAndOunces(200, 10)));
-            weighIns.Add(new Classes.AnglerWeighIn(new Classes.Angler("Christian Harborow"), new Classes.PoundsAndOunces(200, 10)));
+        private void DisplayCurrentMatch()
+        {
+            stackLayout.Children.Clear();
 
-            Classes.CurrentMatch currentMatch = new Classes.CurrentMatch(
-                new DateTime(2021, 5, 4, 9, 0, 0), "A Very Long Venu Name", "A Very Long Pool Name", weighIns);
+            if (App.CurrentMatch == null)
+            {
+                Label noMatchLabel;
 
-            stackLayout.Children.Add(new Layouts.CurrentMatchLayout(currentMatch));
+                if (App.User.IsAdmin)
+                {
+                    if (App.FutureMatches.Count == 0)
+                    {
+                        noMatchLabel = new Label() { Text = "There Is No Match In Progress\nAnd No Future Match Planned", 
+                            Style = (Style)App.Current.Resources["centeredLabel"] };
+                        stackLayout.Children.Add(noMatchLabel);
+                        return;
+                    }
+
+                    Button nextMatchButton = new Button() { Text = "Start Next Match", Style = (Style)App.Current.Resources["orangeButton"] };
+                    nextMatchButton.Clicked += OnStartNextMatchClicked;
+                    stackLayout.Children.Add(nextMatchButton);
+                    return;
+                }
+
+                noMatchLabel = new Label() { Text = "There Is No Match In Progress", Style = (Style) App.Current.Resources["centeredLabel"] };
+                stackLayout.Children.Add(noMatchLabel);
+                return;
+            }
+
+            stackLayout.Children.Add(new Layouts.CurrentMatchLayout(App.CurrentMatch));
+        }
+
+        private void OnStartNextMatchClicked(object sender, EventArgs e)
+        {
+            FutureMatch futureMatch = App.FutureMatches.ElementAt(0);
+            App.FutureMatches.RemoveAt(0);
+            App.SerializeFutureMatches();
+            App.CurrentMatch = new CurrentMatch(futureMatch.DateTime, futureMatch.Venue, futureMatch.Pool);
+            App.SerializeCurrentMatch();
+            DisplayCurrentMatch();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            DisplayCurrentMatch();
         }
     }
 }

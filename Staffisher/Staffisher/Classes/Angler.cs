@@ -19,12 +19,6 @@ namespace Staffisher.Classes
             IsAdmin = isAdmin;
         }
 
-        public Angler(string username)
-        {
-            //TESTING PURPOSES
-            Username = username;
-        }
-
         override public string ToString()
         {
             return Username;

@@ -10,10 +10,8 @@
             <TimePicker x:Name="timePicker" TextColor="LightGray" HorizontalOptions="Center"/>
             <Entry x:Name="venueEntry" Placeholder="Venue" HorizontalTextAlignment="Center" Style="{StaticResource darkEntry}"/>
             <Entry x:Name="poolEntry" Placeholder="Pool" HorizontalTextAlignment="Center" Style="{StaticResource darkEntry}"/>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="30" Margin="0, 20, 0, 0">
-                <Button x:Name="cancelButton" Text="Cancel" TextColor="White" BackgroundColor="{StaticResource accentOrange}"/>
-                <Button x:Name="createButton" Text="Create" TextColor="White" BackgroundColor="{StaticResource accentOrange}"/>
-            </StackLayout>
+            <Label x:Name="errorLabel" TextColor="Red" HorizontalTextAlignment="Center"/>
+            <Button x:Name="createButton" Text="Create" Margin="0, 20, 0, 0" Clicked="OnCreateClicked" Style="{StaticResource orangeButton}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

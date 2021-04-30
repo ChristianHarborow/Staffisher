@@ -13,6 +13,7 @@ namespace Staffisher.Layouts
 
             Button weighIn = new Button() 
             { Text = "Weigh In", IsEnabled = !currentMatch.HasWeighedIn(), Margin = 10, Style = buttonStyle };
+            weighIn.Clicked += OnWeighInClicked;
 
             this.Children.Add(weighIn);
 
@@ -23,15 +24,15 @@ namespace Staffisher.Layouts
                 ItemTemplate = new DataTemplate(() =>
                 {
                     Label positionLabel = new Label()
-                    { FontSize = 17, WidthRequest = 30, HorizontalTextAlignment = TextAlignment.End };
+                    { FontSize = 17, TextColor = Color.LightGray, WidthRequest = 30, HorizontalTextAlignment = TextAlignment.End };
                     positionLabel.SetBinding(Label.TextProperty, "Position");
 
                     Label anglerLabel = new Label()
-                    { FontSize = 17, WidthRequest = 180 };
+                    { FontSize = 17, TextColor = Color.LightGray, WidthRequest = 180 };
                     anglerLabel.SetBinding(Label.TextProperty, "Angler");
 
                     Label weightLabel = new Label()
-                    { FontSize = 17, WidthRequest = 95, HorizontalTextAlignment = TextAlignment.End };
+                    { FontSize = 17, TextColor = Color.LightGray, WidthRequest = 95, HorizontalTextAlignment = TextAlignment.End };
                     weightLabel.SetBinding(Label.TextProperty, "Weight");
 
                     return new ViewCell
@@ -48,6 +49,11 @@ namespace Staffisher.Layouts
             };
 
             this.Children.Add(listView);
+        }
+
+        private async void OnWeighInClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Pages.WeighInPage());
         }
     }
 }

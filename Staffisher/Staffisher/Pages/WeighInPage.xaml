@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Staffisher.Pages.WeighInPage"
+             BackgroundColor="{StaticResource backgroundGrey}">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" Margin="30" Spacing="30">
+            <Label Text="Weigh In" Style="{StaticResource titleLabel}"/>
+            <Entry x:Name="poundsEntry" Placeholder="lbs" Keyboard="Numeric" HorizontalTextAlignment="Center" Style="{StaticResource darkEntry}"/>
+            <Entry x:Name="ouncesEntry" Placeholder="oz" Keyboard="Numeric" HorizontalTextAlignment="Center" Style="{StaticResource darkEntry}"/>
+            <Label x:Name="errorLabel" TextColor="Red" HorizontalTextAlignment="Center"/>
+            <Button x:Name="weighInButton" Text="Weigh In" Margin="0, 20, 0, 0" Style="{StaticResource orangeButton}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

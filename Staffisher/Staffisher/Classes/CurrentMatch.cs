@@ -6,29 +6,22 @@ namespace Staffisher.Classes
 {
     public class CurrentMatch : Match
     {
-        public List<AnglerWeighIn> WeighIns { get; }
+        public List<AnglerWeighIn> WeighIns { get; set; }
 
         public CurrentMatch(DateTime dateTime, string venue, string pool) : base(dateTime, venue, pool)
         {
             WeighIns = new List<AnglerWeighIn>();
         }
 
-        public CurrentMatch(DateTime dateTime, string venue, string pool, List<AnglerWeighIn> weighIns) : base(dateTime, venue, pool)
-        {
-            //TESTING PURPOSES
-            WeighIns = weighIns;
-        }
-
         public bool HasWeighedIn()
         {
-            Predicate<AnglerWeighIn> predicate = FindAngler;
-            return WeighIns.Find(predicate) != null;
-        }
+            //After deserialization seperate references of the same object are no longer the same so must check email (unique)
+            foreach (AnglerWeighIn weighIn in WeighIns)
+            {
+                if (weighIn.Angler.Email == App.User.Email) return true;
+            }
 
-        private static bool FindAngler(AnglerWeighIn weighIn)
-        {
-            return weighIn.Angler == App.User;
+            return false;
         }
-
     }
 }

@@ -16,5 +16,7 @@ namespace Staffisher.Classes
             Venue = venue;
             Pool = pool;
         }
+
+        public Match() { }
     }
 }

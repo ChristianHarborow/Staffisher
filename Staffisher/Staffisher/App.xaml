@@ -18,6 +18,10 @@
                 <Setter Property="TextColor" Value="LightGray"/>
                 <Setter Property="Text" Value=""/>
             </Style>
+            <Style x:Key="orangeButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource accentOrange}"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
             <Style x:Key="centeredLabel" TargetType="Label">
                 <Setter Property="TextColor" Value="LightGray"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>

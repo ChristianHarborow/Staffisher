@@ -15,7 +15,7 @@ namespace Staffisher.Pages
         public PastMatchesPage()
         {
             InitializeComponent();
-
+            /*
             List<Classes.AnglerWeighIn> weighIns = new List<Classes.AnglerWeighIn>();
             weighIns.Add(new Classes.AnglerWeighIn(new Classes.Angler("Christian Harborow"), new Classes.PoundsAndOunces(200, 10)));
             weighIns.Add(new Classes.AnglerWeighIn(new Classes.Angler("Christian Harborow"), new Classes.PoundsAndOunces(200, 10)));
@@ -31,6 +31,7 @@ namespace Staffisher.Pages
             stackLayout.Children.Add(new Layouts.PastMatchLayout(pastMatch));
             stackLayout.Children.Add(new Layouts.PastMatchLayout(pastMatch));
             stackLayout.Children.Add(new Layouts.PastMatchLayout(pastMatch));
+            */
         }
     }
 }

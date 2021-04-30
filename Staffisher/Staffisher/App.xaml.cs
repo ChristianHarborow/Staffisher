@@ -6,22 +6,23 @@ using System.Text;
 using System.Text.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Staffisher.Classes;
 
 namespace Staffisher
 {
     public partial class App : Application
     {
-        public static Classes.Angler User { get; set; }
+        public static Angler User { get; set; }
         
-        public static string AnglersPath { get; private set; }
-        public static string FutureMatchesPath { get; private set; }
-        public static string CurrentMatchPath { get; private set; }
-        public static string PastMatchesPath { get; private set; }
+        private static string AnglersPath { get; set; }
+        private static string FutureMatchesPath { get; set; }
+        private static string CurrentMatchPath { get; set; }
+        private static string PastMatchesPath { get; set; }
 
-        public static List<Classes.Angler> Anglers { get; private set; }
-        public static List<Classes.FutureMatch> FutureMatches { get; private set; }
-        public static Classes.CurrentMatch CurrentMatch { get; private set; }
-        public static List<Classes.PastMatch> PastMatches { get; private set; }
+        public static List<Angler> Anglers { get; private set; }
+        public static List<FutureMatch> FutureMatches { get; private set; }
+        public static CurrentMatch CurrentMatch { get; set; }
+        public static List<PastMatch> PastMatches { get; private set; }
 
         public App()
         {
@@ -38,11 +39,11 @@ namespace Staffisher
             CurrentMatchPath = Path.Combine(folderPath, "CurrentMatch.json");
             PastMatchesPath = Path.Combine(folderPath, "PastMatches.json");
 
-            Anglers = DeserializeList<Classes.Angler>(AnglersPath);
-            if (Anglers.Count == 0) Anglers.Add(new Classes.Angler("christianharborow@email.com", GetHash("AdminPass"), "Chrisitan Harborow", true));
-            FutureMatches = DeserializeList<Classes.FutureMatch>(FutureMatchesPath);
-            CurrentMatch = DeserializeObject<Classes.CurrentMatch>(CurrentMatchPath);
-            PastMatches = DeserializeList<Classes.PastMatch>(PastMatchesPath);
+            Anglers = DeserializeList<Angler>(AnglersPath);
+            if (Anglers.Count == 0) Anglers.Add(new Angler("christianharborow@email.com", GetHash("AdminPass"), "Chrisitan Harborow", true));
+            FutureMatches = DeserializeList<FutureMatch>(FutureMatchesPath);
+            CurrentMatch = DeserializeObject<CurrentMatch>(CurrentMatchPath);
+            PastMatches = DeserializeList<PastMatch>(PastMatchesPath);
 
             MainPage = new NavigationPage(new Pages.LoginPage());
         }
@@ -79,17 +80,21 @@ namespace Staffisher
             }
         }
 
-        public static void SerializeList<T>(List<T> list, string path)
+        private static void SerializeList<T>(List<T> list, string path)
         {
             string jsonString = JsonSerializer.Serialize(list);
             File.WriteAllText(path, jsonString);
         }
 
-        public static void SerializeObject<T>(T obj, string path)
+        private static void SerializeObject<T>(T obj, string path)
         {
             string jsonString = JsonSerializer.Serialize(obj);
             File.WriteAllText(path, jsonString);
         }
+
+        public static void SerializeAnglers() { SerializeList<Angler>(Anglers, AnglersPath); }
+        public static void SerializeFutureMatches() { SerializeList<FutureMatch>(FutureMatches, FutureMatchesPath); }
+        public static void SerializeCurrentMatch() { SerializeObject<CurrentMatch>(CurrentMatch, CurrentMatchPath); }
 
         public static string GetHash(string inputString)
         {

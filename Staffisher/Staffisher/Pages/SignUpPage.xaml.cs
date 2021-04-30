@@ -47,6 +47,7 @@ namespace Staffisher.Pages
 
             Classes.Angler angler = new Classes.Angler(email, App.GetHash(password), username);
             App.Anglers.Add(angler);
+            App.SerializeAnglers();
             App.User = angler;
             Navigation.InsertPageBefore(new MainPage(), this);
             await Navigation.PopAsync();

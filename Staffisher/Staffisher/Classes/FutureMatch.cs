@@ -6,9 +6,9 @@ namespace Staffisher.Classes
 {
     public class FutureMatch : Match
     {
-        public List<Angler> Attending { get; }
-        public List<Angler> NotAttending { get; }
-        
+        public List<Angler> Attending { get; set; }
+        public List<Angler> NotAttending { get; set; }
+
         public FutureMatch(DateTime dateTime, string venue, string pool) : base(dateTime, venue, pool)
         {
             Attending = new List<Angler>();
@@ -17,9 +17,20 @@ namespace Staffisher.Classes
 
         public string IsAnglerAttending()
         {
-            if (Attending.Contains(App.User)) return "Attending";
-            if (NotAttending.Contains(App.User)) return "Not Attending";
+            if (ContainsUser(Attending)) return "Attending";
+            if (ContainsUser(NotAttending)) return "Not Attending";
             return "";
+        }
+
+        private bool ContainsUser(List<Angler> list)
+        {
+            //After deserialization seperate references of the same object are no longer the same so must check email (unique)
+            foreach (Angler angler in list)
+            {
+                if (angler.Email == App.User.Email) return true;
+            }
+
+            return false;
         }
 
         public void SetAnglerAttendance(bool isAttending)
