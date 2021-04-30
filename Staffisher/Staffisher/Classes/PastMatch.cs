@@ -6,21 +6,18 @@ namespace Staffisher.Classes
 {
     public class PastMatch : Match
     {
-        public List<AnglerWeighIn> WeighIns { get; }
+        public List<AnglerWeighIn> WeighIns { get; set; }
 
-        public PastMatch(CurrentMatch currentMatch) : base(currentMatch.DateTime, currentMatch.Venue, currentMatch.Pool)
+        public PastMatch(DateTime dateTime, string venue, string pool) : base(dateTime, venue, pool)
         {
-            WeighIns = new List<AnglerWeighIn>(currentMatch.WeighIns);
+            WeighIns = new List<AnglerWeighIn>();
         }
 
-        public string GetPlacement()
+        public string GetPlacement(AnglerWeighIn weighIn)
         {
-            Predicate<AnglerWeighIn> predicate = FindAngler;
-            int placement = WeighIns.FindIndex(predicate);
-            
-            if (placement == -1) return "Did Not Weigh In";
-            
-            placement++;
+            if (weighIn == null) return "Did Not Weigh In";
+
+            int placement = weighIn.Placement;
             string ordinal = "th";
             
             if ((placement % 100) / 10 != 1)
@@ -42,18 +39,21 @@ namespace Staffisher.Classes
             return $"You Placed {placement}{ordinal} Out Of {WeighIns.Count}";
         }
         
-        public string GetWeight()
+        public string GetWeight(AnglerWeighIn weighIn)
         {
-            Predicate<AnglerWeighIn> predicate = FindAngler;
-            AnglerWeighIn weighIn = WeighIns.Find(predicate);
-
             if (weighIn == null) return "Did Not Weigh In";
             return $"You Caught {weighIn.ToString()}";
         }
 
-        private static bool FindAngler(AnglerWeighIn weighIn)
+        public AnglerWeighIn FindWeighIn()
         {
-            return weighIn.Angler == App.User;
+            //After deserialization seperate references of the same object are no longer the same so must check email (unique)
+            foreach (AnglerWeighIn weighIn in WeighIns)
+            {
+                if (weighIn.Angler.Email == App.User.Email) return weighIn;
+            }
+            
+            return null;
         }
     }
 }

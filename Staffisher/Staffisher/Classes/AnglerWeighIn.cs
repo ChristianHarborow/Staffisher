@@ -8,12 +8,17 @@ namespace Staffisher.Classes
     {
         public Angler Angler { get; set; }
         public PoundsAndOunces Weight { get; set; }
-        public int Position { get; set; }
+        public int Placement { get; set; }
 
         public AnglerWeighIn(Angler angler, PoundsAndOunces weight)
         {
             Angler = angler;
             Weight = weight;
+        }
+
+        public override string ToString()
+        {
+            return Weight.ToString();
         }
     }
 }

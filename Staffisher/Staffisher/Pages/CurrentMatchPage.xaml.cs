@@ -18,7 +18,7 @@ namespace Staffisher.Pages
             InitializeComponent();
         }
 
-        private void DisplayCurrentMatch()
+        public void DisplayCurrentMatch()
         {
             stackLayout.Children.Clear();
 
@@ -47,7 +47,7 @@ namespace Staffisher.Pages
                 return;
             }
 
-            stackLayout.Children.Add(new Layouts.CurrentMatchLayout(App.CurrentMatch));
+            stackLayout.Children.Add(new Layouts.CurrentMatchLayout(App.CurrentMatch, this));
         }
 
         private void OnStartNextMatchClicked(object sender, EventArgs e)

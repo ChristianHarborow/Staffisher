@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Staffisher.Classes;
 
 namespace Staffisher.Pages
 {
@@ -15,23 +16,22 @@ namespace Staffisher.Pages
         public PastMatchesPage()
         {
             InitializeComponent();
-            /*
-            List<Classes.AnglerWeighIn> weighIns = new List<Classes.AnglerWeighIn>();
-            weighIns.Add(new Classes.AnglerWeighIn(new Classes.Angler("Christian Harborow"), new Classes.PoundsAndOunces(200, 10)));
-            weighIns.Add(new Classes.AnglerWeighIn(new Classes.Angler("Christian Harborow"), new Classes.PoundsAndOunces(200, 10)));
-            weighIns.Add(new Classes.AnglerWeighIn(new Classes.Angler("Christian Harborow"), new Classes.PoundsAndOunces(200, 10)));
+        }
 
-            Classes.CurrentMatch currentMatch = new Classes.CurrentMatch(
-                new DateTime(2021, 5, 4, 9, 0, 0), "A Very Long Venu Name", "A Very Long Pool Name", weighIns);
+        private void DisplayPastMatches()
+        {
+            stackLayout.Children.Clear();
 
-            Classes.PastMatch pastMatch = new Classes.PastMatch(currentMatch);
+            foreach (PastMatch pastMatch in App.PastMatches)
+            {
+                stackLayout.Children.Add(new Layouts.PastMatchLayout(pastMatch));
+            }
+        }
 
-            stackLayout.Children.Add(new Layouts.PastMatchLayout(pastMatch));
-            stackLayout.Children.Add(new Layouts.PastMatchLayout(pastMatch));
-            stackLayout.Children.Add(new Layouts.PastMatchLayout(pastMatch));
-            stackLayout.Children.Add(new Layouts.PastMatchLayout(pastMatch));
-            stackLayout.Children.Add(new Layouts.PastMatchLayout(pastMatch));
-            */
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            DisplayPastMatches();
         }
     }
 }

@@ -65,10 +65,5 @@ namespace Staffisher.Pages
             }
             #endregion
         }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-
-        }
     }
 }

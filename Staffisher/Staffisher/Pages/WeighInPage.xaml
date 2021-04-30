@@ -9,7 +9,7 @@
             <Entry x:Name="poundsEntry" Placeholder="lbs" Keyboard="Numeric" HorizontalTextAlignment="Center" Style="{StaticResource darkEntry}"/>
             <Entry x:Name="ouncesEntry" Placeholder="oz" Keyboard="Numeric" HorizontalTextAlignment="Center" Style="{StaticResource darkEntry}"/>
             <Label x:Name="errorLabel" TextColor="Red" HorizontalTextAlignment="Center"/>
-            <Button x:Name="weighInButton" Text="Weigh In" Margin="0, 20, 0, 0" Style="{StaticResource orangeButton}"/>
+            <Button x:Name="weighInButton" Text="Weigh In" Clicked="OnWeighInClicked" Margin="0, 20, 0, 0" Style="{StaticResource orangeButton}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

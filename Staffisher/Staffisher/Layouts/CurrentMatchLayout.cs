@@ -2,20 +2,35 @@
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using Staffisher.Classes;
+using Staffisher.Pages;
 
 namespace Staffisher.Layouts
 {
     class CurrentMatchLayout : MatchLayout
     {
-        public CurrentMatchLayout(Classes.CurrentMatch currentMatch) : base(currentMatch)
+        private CurrentMatchPage page;
+
+        public CurrentMatchLayout(CurrentMatch currentMatch, CurrentMatchPage page) : base(currentMatch)
         {
+            this.page = page;
             this.Children.Add(new Label() { Text = currentMatch.HasWeighedIn() ? "You Have Weighed In" : "You Have Not Weighed In", Style = labelStyle });
+            
+            StackLayout buttons = new StackLayout() { Orientation = StackOrientation.Horizontal, HorizontalOptions = LayoutOptions.Center, Margin = 10 };
 
-            Button weighIn = new Button() 
-            { Text = "Weigh In", IsEnabled = !currentMatch.HasWeighedIn(), Margin = 10, Style = buttonStyle };
-            weighIn.Clicked += OnWeighInClicked;
+            Button weighInButton = new Button() 
+            { Text = "Weigh In", IsEnabled = !currentMatch.HasWeighedIn(), Style = buttonStyle };
+            weighInButton.Clicked += OnWeighInClicked;
+            buttons.Children.Add(weighInButton);
 
-            this.Children.Add(weighIn);
+            if (App.User.IsAdmin)
+            {
+                Button endMatchButton = new Button() { Text = "End Match", Style = buttonStyle };
+                endMatchButton.Clicked += OnEndMatchClicked;
+                buttons.Children.Add(endMatchButton);
+            }
+
+            this.Children.Add(buttons);
 
             ListView listView = new ListView
             {
@@ -25,7 +40,7 @@ namespace Staffisher.Layouts
                 {
                     Label positionLabel = new Label()
                     { FontSize = 17, TextColor = Color.LightGray, WidthRequest = 30, HorizontalTextAlignment = TextAlignment.End };
-                    positionLabel.SetBinding(Label.TextProperty, "Position");
+                    positionLabel.SetBinding(Label.TextProperty, "Placement");
 
                     Label anglerLabel = new Label()
                     { FontSize = 17, TextColor = Color.LightGray, WidthRequest = 180 };
@@ -53,7 +68,23 @@ namespace Staffisher.Layouts
 
         private async void OnWeighInClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Pages.WeighInPage());
+            await Navigation.PushAsync(new WeighInPage());
+        }
+
+        private async void OnEndMatchClicked(object sender, EventArgs e)
+        {
+            bool endMatch = await page.DisplayAlert("End Match", "Are You Sure You Want To End The Match?", "Yes", "No");
+
+            if (endMatch)
+            {
+                PastMatch pastMatch = new PastMatch(App.CurrentMatch.DateTime, App.CurrentMatch.Venue, App.CurrentMatch.Pool)
+                { WeighIns = App.CurrentMatch.WeighIns };
+                App.CurrentMatch = null;
+                App.SerializeCurrentMatch();
+                App.PastMatches.Insert(0, pastMatch);
+                App.SerializePastMatches();
+                page.DisplayCurrentMatch();
+            }
         }
     }
 }

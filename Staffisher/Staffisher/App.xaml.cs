@@ -95,6 +95,7 @@ namespace Staffisher
         public static void SerializeAnglers() { SerializeList<Angler>(Anglers, AnglersPath); }
         public static void SerializeFutureMatches() { SerializeList<FutureMatch>(FutureMatches, FutureMatchesPath); }
         public static void SerializeCurrentMatch() { SerializeObject<CurrentMatch>(CurrentMatch, CurrentMatchPath); }
+        public static void SerializePastMatches() { SerializeList<PastMatch>(PastMatches, PastMatchesPath); }
 
         public static string GetHash(string inputString)
         {

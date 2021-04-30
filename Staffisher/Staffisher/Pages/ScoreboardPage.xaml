@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Staffisher.Pages.ScoreboardPage"
+             BackgroundColor="{StaticResource backgroundGrey}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Scoreboard" Style="{StaticResource titleLabel}" Margin="0, 0, 0, 10"/>
+            <ListView x:Name="listView" SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Spacing="15">
+                                <Label Text="{Binding Placement}" FontSize="17" TextColor="LightGray" WidthRequest="30" HorizontalTextAlignment="End"/>
+                                <Label Text="{Binding Angler}" FontSize="17" TextColor="LightGray" WidthRequest="180"/>
+                                <Label Text="{Binding Weight}" FontSize="17" TextColor="LightGray" WidthRequest="95" HorizontalTextAlignment="End"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
