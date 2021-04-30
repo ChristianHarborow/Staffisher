@@ -29,7 +29,7 @@ namespace Staffisher
             InitializeComponent();
 
             /* In the final version of the application data will be retrieved from a database when required
-             * Currently all data is being stored at all times on the device
+             * Currently all data is being stored on the device
              * This is just for demonstration purposes and will not occur in the final version
              */
 
@@ -40,7 +40,7 @@ namespace Staffisher
             PastMatchesPath = Path.Combine(folderPath, "PastMatches.json");
 
             Anglers = DeserializeList<Angler>(AnglersPath);
-            if (Anglers.Count == 0) Anglers.Add(new Angler("christianharborow@email.com", GetHash("AdminPass"), "Chrisitan Harborow", true));
+            if (Anglers.Count == 0) Anglers.Add(new Angler("johnsmith@email.com", GetHash("AdminPass"), "John Smith", true));
             FutureMatches = DeserializeList<FutureMatch>(FutureMatchesPath);
             CurrentMatch = DeserializeObject<CurrentMatch>(CurrentMatchPath);
             PastMatches = DeserializeList<PastMatch>(PastMatchesPath);

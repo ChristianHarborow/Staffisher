@@ -47,10 +47,10 @@ namespace Staffisher.Pages
             {
                 MenuItems = new ObservableCollection<MainPageFlyoutMenuItem>(new[]
                 {
-                    new MainPageFlyoutMenuItem { Id = 0, Title = "Stats", TargetType = typeof(StatsPage)},
-                    new MainPageFlyoutMenuItem { Id = 1, Title = "Matches", TargetType = typeof(MatchesPage)},
+                    new MainPageFlyoutMenuItem { Id = 0, Title = "Matches", TargetType = typeof(MatchesPage)},
+                    new MainPageFlyoutMenuItem { Id = 1, Title = "Stats", TargetType = typeof(StatsPage)},
                     new MainPageFlyoutMenuItem { Id = 2, Title = "Social" },
-                    new MainPageFlyoutMenuItem { Id = 2, Title = "Settings" }
+                    new MainPageFlyoutMenuItem { Id = 3, Title = "Settings" }
                 });
             }
 

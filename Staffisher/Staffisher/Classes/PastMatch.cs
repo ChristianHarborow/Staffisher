@@ -6,14 +6,14 @@ namespace Staffisher.Classes
 {
     public class PastMatch : Match
     {
-        public List<AnglerWeighIn> WeighIns { get; set; }
+        public List<WeighIn> WeighIns { get; set; }
 
         public PastMatch(DateTime dateTime, string venue, string pool) : base(dateTime, venue, pool)
         {
-            WeighIns = new List<AnglerWeighIn>();
+            WeighIns = new List<WeighIn>();
         }
 
-        public string GetPlacement(AnglerWeighIn weighIn)
+        public string GetPlacement(WeighIn weighIn)
         {
             if (weighIn == null) return "Did Not Weigh In";
 
@@ -39,16 +39,16 @@ namespace Staffisher.Classes
             return $"You Placed {placement}{ordinal} Out Of {WeighIns.Count}";
         }
         
-        public string GetWeight(AnglerWeighIn weighIn)
+        public string GetWeight(WeighIn weighIn)
         {
             if (weighIn == null) return "Did Not Weigh In";
             return $"You Caught {weighIn.ToString()}";
         }
 
-        public AnglerWeighIn FindWeighIn()
+        public WeighIn FindWeighIn()
         {
             //After deserialization seperate references of the same object are no longer the same so must check email (unique)
-            foreach (AnglerWeighIn weighIn in WeighIns)
+            foreach (WeighIn weighIn in WeighIns)
             {
                 if (weighIn.Angler.Email == App.User.Email) return weighIn;
             }

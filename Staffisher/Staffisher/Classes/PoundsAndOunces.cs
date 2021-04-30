@@ -32,14 +32,26 @@ namespace Staffisher.Classes
             Ounces = ounces;
         }
 
-        public static PoundsAndOunces operator +(PoundsAndOunces a, PoundsAndOunces b)
+        public static PoundsAndOunces operator +(PoundsAndOunces x, PoundsAndOunces y)
         {
             PoundsAndOunces c = new PoundsAndOunces
             {
-                Pounds = a.Pounds + b.Pounds,
-                Ounces = a.Ounces + b.Ounces
+                Pounds = x.Pounds + y.Pounds,
+                Ounces = x.Ounces + y.Ounces
             };
             return c;
+        }
+
+        public static PoundsAndOunces operator /(PoundsAndOunces x, int y)
+        {
+            double pounds = x.Pounds;
+            double ounces = x.Ounces;
+            pounds /= y;
+            ounces /= y;
+            ounces += (pounds % 1) * 16;
+            pounds = Math.Floor(pounds);
+            ounces = Math.Floor(ounces);
+            return new PoundsAndOunces((int)pounds, (int)ounces);
         }
 
         public override string ToString()
@@ -51,18 +63,19 @@ namespace Staffisher.Classes
         {
             PoundsAndOunces other = (PoundsAndOunces)obj;
 
-            if (Pounds.CompareTo(other.Pounds) < 0)
-            {
-                return -1;
-            }
-            else if (Pounds.CompareTo(other.Pounds) > 0)
-            {
-                return 1;
-            }
-            else
-            {
-                return Ounces.CompareTo(other.Ounces);
-            }
+            if (Pounds.CompareTo(other.Pounds) < 0)  return -1;
+            else if (Pounds.CompareTo(other.Pounds) > 0) return 1;
+            else return Ounces.CompareTo(other.Ounces);
+        }
+
+        public static bool operator <(PoundsAndOunces x, PoundsAndOunces y)
+        {
+            return x.CompareTo(y) < 0;
+        }
+
+        public static bool operator >(PoundsAndOunces x, PoundsAndOunces y)
+        {
+            return x.CompareTo(y) > 0;
         }
     }
 }

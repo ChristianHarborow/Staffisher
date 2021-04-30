@@ -14,7 +14,7 @@ namespace Staffisher.Pages
 
     public partial class ScoreboardPage : ContentPage
     {
-        public ScoreboardPage(List<AnglerWeighIn> weighIns)
+        public ScoreboardPage(List<WeighIn> weighIns)
         {
             InitializeComponent();
 

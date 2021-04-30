@@ -43,7 +43,7 @@ namespace Staffisher.Pages
                 return;
             }
 
-            AnglerWeighIn weighIn = new AnglerWeighIn(App.User, new PoundsAndOunces(pounds, ounces));
+            WeighIn weighIn = new WeighIn(App.User, new PoundsAndOunces(pounds, ounces));
             App.CurrentMatch.WeighIns.Add(weighIn);
             App.CurrentMatch.WeighIns.Sort(SortWeighInsByWeight);
             
@@ -56,7 +56,7 @@ namespace Staffisher.Pages
             await Navigation.PopAsync();
         }
 
-        private static int SortWeighInsByWeight(AnglerWeighIn x, AnglerWeighIn y)
+        private static int SortWeighInsByWeight(WeighIn x, WeighIn y)
         {
             return y.Weight.CompareTo(x.Weight);
         }

@@ -9,11 +9,11 @@ namespace Staffisher.Layouts
 {
     class PastMatchLayout : MatchLayout
     {
-        private List<AnglerWeighIn> weighIns;
+        private List<WeighIn> weighIns;
         public PastMatchLayout(PastMatch pastMatch) : base(pastMatch)
         {
             weighIns = pastMatch.WeighIns;
-            AnglerWeighIn weighIn = pastMatch.FindWeighIn();
+            WeighIn weighIn = pastMatch.FindWeighIn();
             string placement = pastMatch.GetPlacement(weighIn);
 
             this.Children.Add(new Label() { Text = placement, Style = labelStyle });
